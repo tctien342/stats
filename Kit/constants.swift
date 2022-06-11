@@ -18,6 +18,10 @@ public struct Popup_c_s {
     public let spacing: CGFloat = 2
     public let headerHeight: CGFloat = 42
     public let separatorHeight: CGFloat = 30
+    public let borderRadius: CGFloat = 4
+    public let getOverlayColor = ({ (darkMode: Bool) -> CGColor in
+        return darkMode ? NSColor(hexString: "#111111", alpha: 0.25).cgColor : NSColor(hexString: "#f5f5f5", alpha: 0.8).cgColor
+    })
 }
 
 public struct Settings_c_s {

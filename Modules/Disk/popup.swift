@@ -102,7 +102,7 @@ internal class DiskView: NSStackView {
             right: 0
         )
         self.wantsLayer = true
-        self.layer?.cornerRadius = 2
+        self.layer?.cornerRadius = Constants.Popup.borderRadius
         
         self.addArrangedSubview(self.nameView)
         self.addArrangedSubview(self.chartView)
@@ -120,7 +120,7 @@ internal class DiskView: NSStackView {
     }
     
     override func updateLayer() {
-        self.layer?.backgroundColor = isDarkMode ? NSColor(hexString: "#111111", alpha: 0.25).cgColor : NSColor(hexString: "#f5f5f5", alpha: 1).cgColor
+        self.layer?.backgroundColor = Constants.Popup.getOverlayColor(isDarkMode)
     }
     
     public func updateFree(free: Int64) {
@@ -248,7 +248,7 @@ internal class ChartView: NSStackView {
         
         self.wantsLayer = true
         self.layer?.backgroundColor = NSColor.white.cgColor
-        self.layer?.cornerRadius = 3
+        self.layer?.cornerRadius = Constants.Popup.borderRadius
         
         let chart = NetworkChartView(frame: NSRect(
             x: 0,

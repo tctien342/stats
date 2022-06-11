@@ -90,7 +90,7 @@ private class GPUView: NSStackView {
         self.distribution = .fillProportionally
         self.spacing = 0
         self.wantsLayer = true
-        self.layer?.cornerRadius = 2
+        self.layer?.cornerRadius = Constants.Popup.borderRadius
         
         self.addArrangedSubview(self.title())
         self.addArrangedSubview(self.stats())
@@ -106,7 +106,7 @@ private class GPUView: NSStackView {
     }
     
     override func updateLayer() {
-        self.layer?.backgroundColor = isDarkMode ? NSColor(hexString: "#111111", alpha: 0.25).cgColor : NSColor(hexString: "#f5f5f5", alpha: 1).cgColor
+        self.layer?.backgroundColor = Constants.Popup.getOverlayColor(isDarkMode)
     }
     
     private func title() -> NSView {

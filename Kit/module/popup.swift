@@ -146,7 +146,7 @@ internal class PopupView: NSView {
         super.init(frame: CGRect(x: frame.origin.x, y: frame.origin.y, width: frame.width, height: frame.height))
         
         self.wantsLayer = true
-        self.layer?.cornerRadius = 3
+        self.layer?.cornerRadius = Constants.Popup.borderRadius
         
         self.body.drawsBackground = false
         self.body.translatesAutoresizingMaskIntoConstraints = true
@@ -165,7 +165,13 @@ internal class PopupView: NSView {
     }
     
     override func updateLayer() {
-        self.layer!.backgroundColor = self.isDarkMode ? NSColor.windowBackgroundColor.cgColor : NSColor.white.cgColor
+        let blurView = NSVisualEffectView(frame: self.bounds)
+        blurView.blendingMode = .behindWindow
+        blurView.material = .popover
+        blurView.state = .active
+        
+        self.layer!.backgroundColor = .clear
+        self.window?.contentView?.addSubview(blurView, positioned: .below, relativeTo: .none)
     }
     
     public func setView(_ view: Popup_p?) {

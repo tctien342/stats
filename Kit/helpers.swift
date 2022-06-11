@@ -703,7 +703,7 @@ public class ProcessView: NSStackView {
         self.orientation = .horizontal
         self.distribution = .fillProportionally
         self.spacing = 0
-        self.layer?.cornerRadius = 3
+        self.layer?.cornerRadius = Constants.Popup.borderRadius
         
         let imageBox: NSView = {
             let view = NSView(frame: NSRect(x: 0, y: 0, width: 0, height: 0))

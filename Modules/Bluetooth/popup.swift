@@ -79,7 +79,7 @@ internal class BLEView: NSStackView {
         self.alignment = .centerY
         self.spacing = 0
         self.wantsLayer = true
-        self.layer?.cornerRadius = 2
+        self.layer?.cornerRadius = Constants.Popup.borderRadius
         
         let nameView: NSTextField = TextView(frame: NSRect(x: 0, y: 0, width: 0, height: 16))
         nameView.font = NSFont.systemFont(ofSize: 13, weight: .light)
@@ -99,7 +99,7 @@ internal class BLEView: NSStackView {
     }
     
     override func updateLayer() {
-        self.layer?.backgroundColor = isDarkMode ? NSColor(hexString: "#111111", alpha: 0.25).cgColor : NSColor(hexString: "#f5f5f5", alpha: 1).cgColor
+        self.layer?.backgroundColor = Constants.Popup.getOverlayColor(isDarkMode)
     }
     
     public func update(_ batteryLevel: [KeyValue_t]) {

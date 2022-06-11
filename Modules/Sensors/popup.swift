@@ -208,7 +208,7 @@ internal class ValueSensorView: NSStackView {
         self.orientation = .horizontal
         self.distribution = .fillProportionally
         self.spacing = 0
-        self.layer?.cornerRadius = 3
+        self.layer?.cornerRadius = Constants.Popup.borderRadius
         
         self.labelView.stringValue = sensor.name
         self.labelView.toolTip = sensor.key
@@ -263,7 +263,7 @@ internal class ChartSensorView: NSStackView {
         self.orientation = .horizontal
         self.distribution = .fillProportionally
         self.spacing = 0
-        self.layer?.cornerRadius = 3
+        self.layer?.cornerRadius = Constants.Popup.borderRadius
         
         self.chart = LineChartView(frame: NSRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height), num: 120)
         self.chart?.suffix = suffix
@@ -342,7 +342,7 @@ internal class FanView: NSStackView {
         self.spacing = 1
         self.edgeInsets = NSEdgeInsets(top: inset, left: inset, bottom: inset, right: inset)
         self.wantsLayer = true
-        self.layer?.cornerRadius = 2
+        self.layer?.cornerRadius = Constants.Popup.borderRadius
         self.layer?.backgroundColor = NSColor.red.cgColor
         
         self.addArrangedSubview(self.nameAndSpeed())
@@ -381,7 +381,7 @@ internal class FanView: NSStackView {
     }
     
     override func updateLayer() {
-        self.layer?.backgroundColor = isDarkMode ? NSColor(hexString: "#111111", alpha: 0.25).cgColor : NSColor(hexString: "#f5f5f5", alpha: 1).cgColor
+        self.layer?.backgroundColor = Constants.Popup.getOverlayColor(isDarkMode)
     }
     
     private func nameAndSpeed() -> NSView {
@@ -484,7 +484,7 @@ internal class FanView: NSStackView {
         minBtn.wantsLayer = true
         minBtn.layer?.cornerRadius = 3
         minBtn.layer?.borderWidth = 1
-        minBtn.layer?.borderColor = NSColor.lightGray.cgColor
+        minBtn.layer?.borderColor = NSColor.gray.withAlphaComponent(0.5).cgColor
         
         let valueField: NSTextField = TextView(frame: NSRect(x: 80, y: 0, width: levels.frame.width - 160, height: levels.frame.height))
         valueField.font = NSFont.systemFont(ofSize: 11, weight: .light)
@@ -502,7 +502,7 @@ internal class FanView: NSStackView {
         maxBtn.action = #selector(self.setMax)
         maxBtn.layer?.cornerRadius = 3
         maxBtn.layer?.borderWidth = 1
-        maxBtn.layer?.borderColor = NSColor.lightGray.cgColor
+        maxBtn.layer?.borderColor = NSColor.gray.withAlphaComponent(0.5).cgColor
         
         controls.addArrangedSubview(slider)
         
@@ -649,9 +649,9 @@ private class ModeButtons: NSStackView {
         self.distribution = .fillProportionally
         self.spacing = 0
         self.wantsLayer = true
-        self.layer?.cornerRadius = 3
+        self.layer?.cornerRadius = Constants.Popup.borderRadius
         self.layer?.borderWidth = 1
-        self.layer?.borderColor = NSColor.lightGray.cgColor
+        self.layer?.borderColor = NSColor.gray.withAlphaComponent(0.5).cgColor
         
         let modes: NSStackView = NSStackView(frame: NSRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height))
         modes.orientation = .horizontal

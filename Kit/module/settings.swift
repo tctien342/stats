@@ -246,7 +246,7 @@ class WidgetSelectorView: NSStackView {
         self.translatesAutoresizingMaskIntoConstraints = false
         self.wantsLayer = true
         self.layer?.backgroundColor = .white
-        self.layer?.cornerRadius = 3
+        self.layer?.cornerRadius = Constants.Popup.borderRadius
         self.edgeInsets = NSEdgeInsets(
             top: Constants.Settings.margin,
             left: Constants.Settings.margin,
